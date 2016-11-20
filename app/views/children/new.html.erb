@@ -1,0 +1,10 @@
+<h1>Add Your Child</h1>
+
+  <%= form_for @child do |f| %>
+    <div class="container-gray">
+      <div class="input-field">
+        <%= f.text_field :child_name, placeholder: "Child's Name" %>
+      </div>
+      <%= f.submit "Add Child", class: "button submit-button" %>
+    </div>
+  <% end %>

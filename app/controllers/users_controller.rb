@@ -1,13 +1,9 @@
 class UsersController < ApplicationController
 
-	before_action :get_user, only: [:show]
+	before_action :get_user, only: [:show, :edit, :update]
 
 	def index
 		@users = User.all
-	end
-
-	def show
-
 	end
 
 	def new
@@ -24,6 +20,24 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def show
+	end
+
+	def edit
+	end
+
+	def update
+	  if @user.update(update_user_params)
+	    flash[:success] = 'Profile Updated!'
+	    redirect_to @user
+	  else
+	    flash[:error] = @user.errors.full_messages.join('. ')
+	    render :edit
+	  end
+	end
+
+
+	private
 
 	def get_user
     @user = User.find(params[:id])
@@ -31,6 +45,10 @@ class UsersController < ApplicationController
 
   def create_user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password)
+  end
+
+  def update_user_params
+    params.require(:user).permit(:first_name, :last_name, :email)
   end
 
 end

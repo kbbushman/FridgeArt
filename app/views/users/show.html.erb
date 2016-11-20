@@ -1,1 +1,6 @@
 <h1>Welcome <%= @user.first_name %>!</h1>
+
+<h3>Your Information:</h3>
+<p>Name: <%= @user.first_name %> <%= @user.last_name %></p>
+<p>Email: <%= @user.email %></p>
+<%= link_to 'Edit Profile', edit_user_path, class: 'button' %>

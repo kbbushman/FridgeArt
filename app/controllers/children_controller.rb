@@ -59,12 +59,12 @@ class ChildrenController < ApplicationController
 		params.require(:child).permit(:child_name)
 	end
 
-	def get_child
-    @child = Child.find(params[:id])
-  end
-
   def update_child_params
     params.require(:child).permit(:child_name)
+  end
+
+	def get_child
+    @child = Child.find(params[:id])
   end
 
 	def destroy_child

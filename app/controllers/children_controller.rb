@@ -1,6 +1,6 @@
 class ChildrenController < ApplicationController
 
-	before_action :get_child, only: [:show]
+	before_action :get_child, only: [:show, :edit, :update]
 	before_action :destroy_child, only: [:destroy]
 
 
@@ -28,6 +28,19 @@ class ChildrenController < ApplicationController
 	def show
 	end
 
+	def edit
+	end
+
+	def update
+		if @child.update(update_child_params)
+		  flash[:success] = 'Child Updated!'
+		  redirect_to current_user
+		else
+		  flash[:error] = @child.errors.full_messages.join('. ')
+		  render :edit
+		end
+	end
+
 	def destroy
 		@child.destroy
 		if @child.destroy
@@ -48,6 +61,10 @@ class ChildrenController < ApplicationController
 
 	def get_child
     @child = Child.find(params[:id])
+  end
+
+  def update_child_params
+    params.require(:child).permit(:child_name)
   end
 
 	def destroy_child

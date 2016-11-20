@@ -28,9 +28,11 @@ ActiveRecord::Schema.define(version: 20161120012833) do
     t.string   "gallery_name"
     t.string   "gallery_image"
     t.integer  "child_id"
+    t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["child_id"], name: "index_galleries_on_child_id", using: :btree
+    t.index ["user_id"], name: "index_galleries_on_user_id", using: :btree
   end
 
   create_table "photos", force: :cascade do |t|
@@ -55,6 +57,7 @@ ActiveRecord::Schema.define(version: 20161120012833) do
 
   add_foreign_key "children", "users"
   add_foreign_key "galleries", "children"
+  add_foreign_key "galleries", "users"
   add_foreign_key "photos", "galleries"
   add_foreign_key "photos", "users"
 end

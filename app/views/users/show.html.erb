@@ -3,4 +3,5 @@
 <h3>Your Information:</h3>
 <p>Name: <%= @user.first_name %> <%= @user.last_name %></p>
 <p>Email: <%= @user.email %></p>
-<%= link_to 'Edit Profile', edit_user_path, class: 'button' %>
+<p><%= link_to 'Edit Profile', edit_user_path, class: 'button' %></p>
+<p><%= link_to 'Delete Profile', @user, method: :delete, class: 'button delete-button', data: { confirm: 'Are you sure you want to delete your profile?' } %></p>

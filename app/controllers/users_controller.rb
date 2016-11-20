@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_action :get_user, only: [:show, :edit, :update]
+	before_action :get_user, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@users = User.all
@@ -34,6 +34,11 @@ class UsersController < ApplicationController
 	    flash[:error] = @user.errors.full_messages.join('. ')
 	    render :edit
 	  end
+	end
+
+	def destroy
+		@user.destroy
+		redirect_to root_path
 	end
 
 

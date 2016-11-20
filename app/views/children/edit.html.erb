@@ -1,0 +1,10 @@
+<h1>Edit Child</h1>
+
+<%= form_for(@child,url: user_path) do |f| %>
+
+	<p><span class="profile-label">Child's Name</span><%= f.text_area :child_name, placeholder: "Child's Name", class: 'value' %></p>
+
+	<p><%= link_to 'Cancel', :back, class: 'button'  %></p>
+	<p><%= f.submit "Save", class: 'button submit-button %></p>
+
+<% end %>

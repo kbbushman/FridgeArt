@@ -1,6 +1,8 @@
 class ChildrenController < ApplicationController
 
-	before_action :get_child, only: [:destroy]
+	before_action :get_child, only: [:show]
+	before_action :destroy_child, only: [:destroy]
+
 
 	def index
 		@children = Child.all
@@ -45,6 +47,10 @@ class ChildrenController < ApplicationController
 	end
 
 	def get_child
+    @child = Child.find(params[:id])
+  end
+
+	def destroy_child
     @child = Child.find(params[:child_id])
   end
 

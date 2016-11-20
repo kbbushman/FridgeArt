@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-	root to: 'users#show'
+	root to: 'welcome#show'
 
 	resources :users
 

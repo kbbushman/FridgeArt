@@ -9,6 +9,25 @@
   </head>
 
   <body>
+
+  <!-- Start Flash Errors -->
+  <% if flash[:error] %>
+    <div class="container small-container">
+      <div class="alert alert-danger">
+        <%= flash[:error] %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if flash[:success] %>
+    <div class="container small-container">
+      <div class="alert alert-success">
+        <%= flash[:success] %>
+      </div>
+    </div>
+  <% end %><!-- End Flash Errors -->
+
     <%= yield %>
+
   </body>
 </html>

@@ -9,10 +9,12 @@ class ChildrenController < ApplicationController
 	end
 
 	def create
-		@child = Child.create(create_child_params)
+		@child = User.find(session[:user_id])
+		.children
+		.create(create_child_params)
 		if @child.save
 		  flash[:success] = 'Your Child Has Been Added.'
-		  redirect_to @user
+		  redirect_to current_user
 		else
 		  flash[:error] = @child.errors.full_messages.join('. ')
 		  render :new

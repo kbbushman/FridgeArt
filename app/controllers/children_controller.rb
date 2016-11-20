@@ -1,5 +1,7 @@
 class ChildrenController < ApplicationController
 
+	before_action :get_child, only: [:destroy]
+
 	def index
 		@children = Child.all
 	end
@@ -24,11 +26,26 @@ class ChildrenController < ApplicationController
 	def show
 	end
 
+	def destroy
+		@child.destroy
+		if @child.destroy
+		  flash[:success] = 'Your Child Has Been Deleted Successfully.'
+		  redirect_to current_user
+		else
+		  flash[:error] = @child.errors.full_messages.join('. ')
+		  render :back
+		end
+	end
+
 
 	private
 
 	def create_child_params
 		params.require(:child).permit(:child_name)
 	end
+
+	def get_child
+    @child = Child.find(params[:child_id])
+  end
 
 end

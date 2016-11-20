@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@users = User.all
+
 	end
 
 	def new
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 		if @user.save
 			redirect_to @user
 		else
-			flash[:error] = 'Unable to create your account. Please try again.'
+			flash[:error] = @user.errors.full_messages.join('. ')
       render :new
 		end
 	end
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def create_user_params
-    params.require(:user).permit(:first_name,:last_name,:email,:password)
+    params.require(:user).permit(:first_name, :last_name, :email, :password)
   end
 
 end

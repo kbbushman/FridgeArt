@@ -1,0 +1,14 @@
+<h1>Edit Your Profile</h1>
+
+<%= form_for(@user,url: user_path) do |f| %>
+
+	<p><span class="profile-label">First Name</span><%= f.text_area :first_name, placeholder: "First Name", class: 'value' %></p>
+
+	<p><span class="profile-label">Last Name</span><%= f.text_area :last_name, placeholder: "Last Name", class: 'value' %></p>
+
+	<p><span class="profile-label">Email</span><%= f.text_area :email, placeholder: "Email", class: 'value' %></p>
+
+	<p><%= link_to 'Cancel', :back, class: 'button'  %></p>
+	<p><%= f.submit "Save", class: 'button musician-button' %></p>
+
+<% end %>

@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
 
-	before_action :get_photo, only: [:show]
+	before_action :get_photo, only: [:show, :destroy]
 
 	def index
 		@photos = Photo.all
@@ -27,6 +27,17 @@ class PhotosController < ApplicationController
 	end
 
 	def show
+	end
+
+	def destroy
+		@photo.destroy
+		if @photo.destroy
+		  flash[:success] = 'Photo Has Been Deleted Successfully.'
+		  redirect_to current_user
+		else
+		  flash[:error] = @photo.errors.full_messages.join('. ')
+		  render :back
+		end
 	end
 
 

@@ -26,6 +26,9 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  # Tell Paperclip where to find ImageMagick
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 

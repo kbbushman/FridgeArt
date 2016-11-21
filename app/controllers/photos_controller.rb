@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
 
-	before_action :get_photo, only: [:show, :destroy]
+	before_action :get_photo, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@photos = Photo.all
@@ -27,6 +27,19 @@ class PhotosController < ApplicationController
 	end
 
 	def show
+	end
+
+	def edit
+	end
+
+	def update
+			if @photo.update(update_photo_params)
+		  flash[:success] = 'Photo Updated!'
+		  redirect_to @photo
+		else
+		  flash[:error] = @gallery.errors.full_messages.join('. ')
+		  render :edit
+		end
 	end
 
 	def destroy

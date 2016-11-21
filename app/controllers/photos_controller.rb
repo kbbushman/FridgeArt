@@ -60,6 +60,10 @@ class PhotosController < ApplicationController
 		params.require(:photo).permit(:photo_name, :photo_description, :gallery_id)
 	end
 
+	def update_photo_params
+		params.require(:photo).permit(:photo_name, :photo_description)
+	end
+
 	def get_photo
     @photo = Photo.find(params[:id])
   end

@@ -24,4 +24,11 @@ class PhotosController < ApplicationController
 		end
 	end
 
+
+	private
+
+	def create_photo_params
+		params.require(:photo).permit(:photo_name, :photo_description, :gallery_id)
+	end
+
 end

@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
 
+	before_action :get_photo, only: [:show]
+
 	def index
 		@photos = Photo.all
 	end
@@ -24,11 +26,18 @@ class PhotosController < ApplicationController
 		end
 	end
 
+	def show
+	end
+
 
 	private
 
 	def create_photo_params
 		params.require(:photo).permit(:photo_name, :photo_description, :gallery_id)
 	end
+
+	def get_photo
+    @photo = Photo.find(params[:id])
+  end
 
 end

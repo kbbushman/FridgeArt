@@ -1,4 +1,9 @@
 <h1><%= @gallery.gallery_name %></h1>
 
+<ul>
+	<% @gallery.photos.each do |p| %>
+    <li><%= link_to p.photo_name, photo_path(p) %> <%= link_to 'Edit', edit_photo_path(:id => p.id), class: 'button' %> <%= link_to 'Delete', photo_path(:id => p.id), method: :delete, class: 'button delete-button', data: { confirm: 'Are you sure you want to delete this photo?' } %></li>
+  <% end %>
+</ul>
 
 <p><%= link_to 'Add Photo', new_photo_path(:gallery_id => @gallery.id), class: 'button' %></p>

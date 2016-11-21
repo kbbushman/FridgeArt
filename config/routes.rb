@@ -9,5 +9,6 @@ Rails.application.routes.draw do
 	resources :users
 	resources :children
 	resources :galleries
+	resources :photos
 
 end

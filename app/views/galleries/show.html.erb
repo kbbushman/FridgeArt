@@ -1,1 +1,4 @@
 <h1><%= @gallery.gallery_name %></h1>
+
+
+<p><%= link_to 'Add Photo', new_photo_path(:gallery_id => @gallery.id), class: 'button' %></p>

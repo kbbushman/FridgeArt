@@ -1,5 +1,7 @@
 class GalleriesController < ApplicationController
 
+	before_action :get_gallery, only: [:show]
+
 	def index
 		@galleries = Gallery.all
 	end
@@ -33,6 +35,10 @@ class GalleriesController < ApplicationController
 	def create_gallery_params
 		params.require(:gallery).permit(:gallery_name, :child_id)
 	end
+
+	def get_gallery
+    @gallery = Gallery.find(params[:id])
+  end
 
 
 end

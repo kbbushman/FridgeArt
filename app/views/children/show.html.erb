@@ -2,7 +2,7 @@
 
 <ul>
 	<% @child.galleries.each do |g| %>
-    <li><%= g.gallery_name %></li>
+    <li><%= link_to g.gallery_name, gallery_path(g) %></li>
   <% end %>
 </ul>
 

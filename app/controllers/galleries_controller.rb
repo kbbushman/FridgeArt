@@ -1,6 +1,6 @@
 class GalleriesController < ApplicationController
 
-	before_action :get_gallery, only: [:show, :edit, :update]
+	before_action :get_gallery, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@galleries = Gallery.all
@@ -39,6 +39,17 @@ class GalleriesController < ApplicationController
 		else
 		  flash[:error] = @gallery.errors.full_messages.join('. ')
 		  render :edit
+		end
+	end
+
+	def destroy
+		@gallery.destroy
+		if @gallery.destroy
+		  flash[:success] = 'Gallery Has Been Deleted Successfully.'
+		  redirect_to current_user
+		else
+		  flash[:error] = @gallery.errors.full_messages.join('. ')
+		  render :back
 		end
 	end
 

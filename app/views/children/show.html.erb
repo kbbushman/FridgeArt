@@ -2,7 +2,7 @@
 
 <ul>
 	<% @child.galleries.each do |g| %>
-    <li><%= link_to g.gallery_name, gallery_path(g) %></li>
+    <li><%= link_to g.gallery_name, gallery_path(g) %> <%= link_to 'Edit Gallery', edit_gallery_path(:id => g.id), class: 'button delete-button' %></li>
   <% end %>
 </ul>
 

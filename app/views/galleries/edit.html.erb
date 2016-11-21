@@ -1,0 +1,10 @@
+<h1>Edit <%= @gallery.gallery_name %></h1>
+
+<%= form_for(@gallery,url: gallery_path) do |f| %>
+
+	<p><span class="profile-label">Gallery Name</span><%= f.text_field :gallery_name, placeholder: "Gallery Name", class: 'value' %></p>
+
+	<p><%= link_to 'Cancel', :back, class: 'button' %></p>
+	<p><%= f.submit "Save", class: 'button submit-button' %></p>
+
+<% end %>

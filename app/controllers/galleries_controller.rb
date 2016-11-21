@@ -1,6 +1,6 @@
 class GalleriesController < ApplicationController
 
-	before_action :get_gallery, only: [:show]
+	before_action :get_gallery, only: [:show, :edit, :update]
 
 	def index
 		@galleries = Gallery.all
@@ -29,11 +29,28 @@ class GalleriesController < ApplicationController
 	def show
 	end
 
+	def edit
+	end
+
+	def update
+		if @gallery.update(update_gallery_params)
+		  flash[:success] = 'Gallery Updated!'
+		  redirect_to @gallery
+		else
+		  flash[:error] = @gallery.errors.full_messages.join('. ')
+		  render :edit
+		end
+	end
+
 
 	private
 
 	def create_gallery_params
 		params.require(:gallery).permit(:gallery_name, :child_id)
+	end
+
+	def update_gallery_params
+		params.require(:gallery).permit(:gallery_name)
 	end
 
 	def get_gallery

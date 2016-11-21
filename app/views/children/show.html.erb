@@ -1,1 +1,9 @@
 <h1>Current Galleries for <%= @child.child_name %></h1>
+
+<ul>
+	<% @child.galleries.each do |g| %>
+    <li><%= g.gallery_name %></li>
+  <% end %>
+</ul>
+
+<p><%= link_to 'Add Gallery', new_gallery_path(:child_id => @child.id), class: 'button' %></p>

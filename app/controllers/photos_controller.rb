@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
 
-	before_action :get_photo, only: [:show, :destroy]
+	before_action :get_photo, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@photos = Photo.all
@@ -29,6 +29,19 @@ class PhotosController < ApplicationController
 	def show
 	end
 
+	def edit
+	end
+
+	def update
+			if @photo.update(update_photo_params)
+		  flash[:success] = 'Photo Updated!'
+		  redirect_to @photo
+		else
+		  flash[:error] = @gallery.errors.full_messages.join('. ')
+		  render :edit
+		end
+	end
+
 	def destroy
 		@photo.destroy
 		if @photo.destroy
@@ -45,6 +58,10 @@ class PhotosController < ApplicationController
 
 	def create_photo_params
 		params.require(:photo).permit(:photo_name, :photo_description, :gallery_id)
+	end
+
+	def update_photo_params
+		params.require(:photo).permit(:photo_name, :photo_description)
 	end
 
 	def get_photo

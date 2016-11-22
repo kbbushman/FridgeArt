@@ -19,7 +19,7 @@ class GalleriesController < ApplicationController
 
 		if @gallery.save
 		  flash[:success] = 'Your Gallery Has Been Created.'
-		  redirect_to current_user
+		  redirect_to @gallery.child
 		else
 		  flash[:error] = @gallery.errors.full_messages.join('. ')
 		  render :new
@@ -36,7 +36,7 @@ class GalleriesController < ApplicationController
 	def update
 		if @gallery.update(update_gallery_params)
 		  flash[:success] = 'Gallery Updated!'
-		  redirect_to @gallery
+		  redirect_to @gallery.child
 		else
 		  flash[:error] = @gallery.errors.full_messages.join('. ')
 		  render :edit
@@ -47,7 +47,7 @@ class GalleriesController < ApplicationController
 		@gallery.destroy
 		if @gallery.destroy
 		  flash[:success] = 'Gallery Has Been Deleted Successfully.'
-		  redirect_to current_user
+		  redirect_to :back
 		else
 		  flash[:error] = @gallery.errors.full_messages.join('. ')
 		  render :back

@@ -19,7 +19,7 @@ class PhotosController < ApplicationController
 
 		if @photo.save
 		  flash[:success] = 'Your Photo Has Been Added.'
-		  redirect_to current_user
+		  redirect_to @photo.gallery
 		else
 		  flash[:error] = @photo.errors.full_messages.join('. ')
 		  render :new
@@ -35,7 +35,7 @@ class PhotosController < ApplicationController
 	def update
 			if @photo.update(update_photo_params)
 		  flash[:success] = 'Photo Updated!'
-		  redirect_to @photo
+		  redirect_to @photo.gallery
 		else
 		  flash[:error] = @gallery.errors.full_messages.join('. ')
 		  render :edit
@@ -46,7 +46,7 @@ class PhotosController < ApplicationController
 		@photo.destroy
 		if @photo.destroy
 		  flash[:success] = 'Photo Has Been Deleted Successfully.'
-		  redirect_to current_user
+		  redirect_to :back
 		else
 		  flash[:error] = @photo.errors.full_messages.join('. ')
 		  render :back

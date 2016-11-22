@@ -30,6 +30,9 @@ gem 'bcrypt', '~> 3.1.7'
 # File upload for images
 gem "paperclip", "~> 5.0.0"
 
+# Create slugs from User Name
+gem 'friendly_id', '~> 5.1.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

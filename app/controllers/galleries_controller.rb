@@ -27,6 +27,7 @@ class GalleriesController < ApplicationController
 	end
 
 	def show
+		@photos = @gallery.photos
 	end
 
 	def edit

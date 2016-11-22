@@ -3,6 +3,9 @@
 <%= form_for @photo do |f| %>
   <div class="container-gray">
     <div class="input-field">
+      <%= f.file_field :image %>
+    </div>
+    <div class="input-field">
       <%= f.text_field :photo_name, placeholder: "Photo Name" %>
     </div>
     <div class="input-field">

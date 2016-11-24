@@ -1,9 +1,9 @@
 <h1>Current Galleries for <%= @child.child_name %></h1>
 
 <ul>
-	<% @child.galleries.each do |g| %>
-    <li><%= link_to g.gallery_name, gallery_path(g) %> <%= link_to 'Edit', edit_gallery_path(:id => g.id), class: 'button delete-button' %> <%= link_to 'Delete', gallery_path(:id => g.id), method: :delete, class: 'button delete-button', data: { confirm: 'Are you sure you want to delete this gallery?' } %></li>
+	<% @galleries.each do |g| %>
+    <li><%= link_to g.gallery_name, child_gallery_path(@child.id, g.id) %> <%= link_to 'Edit', edit_child_gallery_path(@child.id, g.id), class: 'button delete-button' %> <%= link_to 'Delete', child_gallery_path(@child, g.id), method: :delete, class: 'button delete-button', data: { confirm: 'Are you sure you want to delete this gallery?' } %></li>
   <% end %>
 </ul>
 
-<p><%= link_to 'Add Gallery', new_gallery_path(:child_id => @child.id), class: 'button' %></p>
+<p><%= link_to 'Add Gallery', new_child_gallery_path(@child), class: 'button' %></p>

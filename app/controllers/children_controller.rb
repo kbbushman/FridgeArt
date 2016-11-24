@@ -14,8 +14,8 @@ class ChildrenController < ApplicationController
 
 	def create
 		@child = User.find(session[:user_id])
-		.children
-		.create(child_params)
+								 .children
+								 .create(child_params)
 		if @child.save
 		  flash[:success] = 'Your Child Has Been Added.'
 		  redirect_to current_user

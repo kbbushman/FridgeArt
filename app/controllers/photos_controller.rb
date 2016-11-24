@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
 
+	before_action :get_child, except: [:create]
+	before_action :get_gallery, except: [:create]
 	before_action :get_photo, only: [:show, :edit, :update, :destroy]
 
 	def index
@@ -57,11 +59,19 @@ class PhotosController < ApplicationController
 	private
 
 	def create_photo_params
-		params.require(:photo).permit(:photo_name, :photo_description, :image, :gallery_id)
+		params.require(:photo).permit(:photo_name, :photo_description, :image)
 	end
 
 	def update_photo_params
 		params.require(:photo).permit(:photo_name, :photo_description)
+	end
+
+	def get_child
+		@child = Child.find(params[:child_id])
+	end
+
+	def get_gallery
+		@gallery = Gallery.find(params[:gallery_id])
 	end
 
 	def get_photo

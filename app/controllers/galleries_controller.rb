@@ -1,5 +1,6 @@
 class GalleriesController < ApplicationController
 
+	before_action :get_child, only: [:new, :show, :edit, :update]
 	before_action :get_gallery, only: [:show, :edit, :update, :destroy]
 
 	def index
@@ -57,13 +58,13 @@ class GalleriesController < ApplicationController
 
 	private
 
-	def create_gallery_params
-		params.require(:gallery).permit(:gallery_name, :child_id)
-	end
-
-	def update_gallery_params
+	def gallery_params
 		params.require(:gallery).permit(:gallery_name)
 	end
+
+	def get_child
+    @child = Child.find(params[:child_id])
+  end
 
 	def get_gallery
     @gallery = Gallery.find(params[:id])

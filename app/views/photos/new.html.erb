@@ -1,6 +1,6 @@
 <h1>Add New Photo</h1>
 
-<%= form_for @photo do |f| %>
+<%= form_for ([@child, @gallery, @photo]) do |f| %>
   <div class="container-gray">
     <div class="input-field">
       <%= f.file_field :image %>
@@ -11,9 +11,7 @@
     <div class="input-field">
       <%= f.text_field :photo_description, placeholder: "Photo Description" %>
     </div>
-    <div class="hidden-field">
-      <%= f.hidden_field(:gallery_id, :value => params[:gallery_id]) %>
-    </div>
+    <p><%= link_to 'Cancel', :back, class: 'button' %></p>
     <%= f.submit "Add Photo", class: "button submit-button" %>
   </div>
 <% end %>

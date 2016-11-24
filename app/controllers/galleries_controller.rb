@@ -1,9 +1,10 @@
 class GalleriesController < ApplicationController
 
+	before_action :get_child, only: [:new, :show, :edit, :update]
 	before_action :get_gallery, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@galleries = Gallery.all
+		@galleries = Child.find(params[:id]).galleries.all
 	end
 
 	def new
@@ -11,10 +12,11 @@ class GalleriesController < ApplicationController
 	end
 
 	def create
-		@gallery = current_user
-			.galleries
-			.new(create_gallery_params)
+		@gallery = Child.find(params[:child_id])
+										.galleries
+										.new(gallery_params)
 
+		@gallery.user_id = current_user.id
 		@gallery.save
 
 		if @gallery.save
@@ -27,14 +29,14 @@ class GalleriesController < ApplicationController
 	end
 
 	def show
-		@photos = @gallery.photos
+		@photo = @gallery.photos
 	end
 
 	def edit
 	end
 
 	def update
-		if @gallery.update(update_gallery_params)
+		if @gallery.update(gallery_params)
 		  flash[:success] = 'Gallery Updated!'
 		  redirect_to @gallery.child
 		else
@@ -57,13 +59,13 @@ class GalleriesController < ApplicationController
 
 	private
 
-	def create_gallery_params
-		params.require(:gallery).permit(:gallery_name, :child_id)
-	end
-
-	def update_gallery_params
+	def gallery_params
 		params.require(:gallery).permit(:gallery_name)
 	end
+
+	def get_child
+    @child = Child.find(params[:child_id])
+  end
 
 	def get_gallery
     @gallery = Gallery.find(params[:id])

@@ -14,8 +14,8 @@ class ChildrenController < ApplicationController
 
 	def create
 		@child = User.find(session[:user_id])
-		.children
-		.create(create_child_params)
+								 .children
+								 .create(child_params)
 		if @child.save
 		  flash[:success] = 'Your Child Has Been Added.'
 		  redirect_to current_user
@@ -26,13 +26,14 @@ class ChildrenController < ApplicationController
 	end
 
 	def show
+		@galleries = @child.galleries
 	end
 
 	def edit
 	end
 
 	def update
-		if @child.update(update_child_params)
+		if @child.update(child_params)
 		  flash[:success] = 'Child Updated!'
 		  redirect_to current_user
 		else
@@ -55,13 +56,9 @@ class ChildrenController < ApplicationController
 
 	private
 
-	def create_child_params
+	def child_params
 		params.require(:child).permit(:child_name)
 	end
-
-  def update_child_params
-    params.require(:child).permit(:child_name)
-  end
 
 	def get_child
     @child = Child.find(params[:id])

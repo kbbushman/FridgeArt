@@ -13,8 +13,8 @@ class GalleriesController < ApplicationController
 
 	def create
 		@gallery = Child.find(params[:child_id])
-							.galleries
-							.new(gallery_params)
+										.galleries
+										.new(gallery_params)
 
 		@gallery.user_id = current_user.id
 		@gallery.save

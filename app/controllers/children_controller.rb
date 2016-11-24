@@ -26,6 +26,7 @@ class ChildrenController < ApplicationController
 	end
 
 	def show
+		@galleries = @child.galleries
 	end
 
 	def edit

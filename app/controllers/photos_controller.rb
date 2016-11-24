@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
 	before_action :get_photo, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@photos = Photo.all
+		@photos = @gallery.photos
 	end
 
 	def new
@@ -16,12 +16,12 @@ class PhotosController < ApplicationController
 		@photo = current_user
 						.photos
 						.new(create_photo_params)
-
+		@photo.gallery_id = params[:gallery_id]
 		@photo.save
 
 		if @photo.save
 		  flash[:success] = 'Your Photo Has Been Added.'
-		  redirect_to @photo.gallery
+		  redirect_to child_gallery_path(params[:child_id], @photo.gallery_id)
 		else
 		  flash[:error] = @photo.errors.full_messages.join('. ')
 		  render :new
@@ -37,10 +37,10 @@ class PhotosController < ApplicationController
 	def update
 			if @photo.update(update_photo_params)
 		  flash[:success] = 'Photo Updated!'
-		  redirect_to @photo.gallery
+		  redirect_to child_gallery_path(@child.id, @gallery.id)
 		else
 		  flash[:error] = @gallery.errors.full_messages.join('. ')
-		  render :edit
+		  render :back
 		end
 	end
 
@@ -48,7 +48,7 @@ class PhotosController < ApplicationController
 		@photo.destroy
 		if @photo.destroy
 		  flash[:success] = 'Photo Has Been Deleted Successfully.'
-		  redirect_to :back
+		  redirect_to child_gallery_path(@child.id, @gallery.id)
 		else
 		  flash[:error] = @photo.errors.full_messages.join('. ')
 		  render :back

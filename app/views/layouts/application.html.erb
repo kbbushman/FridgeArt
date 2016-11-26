@@ -13,6 +13,37 @@
 
   <body>
 
+  <!-- Start Responsive Nav -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed collapsed-menu" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">FridgeArt</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Galleries", current_user %></li>
+          <li><%= link_to "Photos", current_user %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <li><%= link_to "Profile", user_path(current_user) %></li>
+            <li><%= link_to "Log Out", logout_path %></li>
+          <% else %>
+            <li><%= link_to "Create Account", new_user_path %></li>
+            <li><%= link_to "Log In", login_path %></li>
+          <% end %>
+        </ul>
+      </div><!-- End Navbar Collapse -->
+    </div><!-- End Container Fluid -->
+  </nav><!-- End Responsive Nav -->
+
   <!-- Start Flash Errors -->
   <% if flash[:error] %>
     <div class="container small-container">

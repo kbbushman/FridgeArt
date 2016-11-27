@@ -1,14 +1,6 @@
-<h1><%= @gallery.gallery_name %></h1>
-
-<ul>
-	<% @photo.each do |p| %>
-    <li><%= link_to(image_tag(p.image.url(:thumb)), child_gallery_photo_path(@child.id, @gallery.id, p)) %><br />
-    <% if current_user == @child.user %>
-    	<%= link_to p.photo_name, child_gallery_photo_path(@child.id, @gallery.id, p) %> <%= link_to 'Edit', edit_child_gallery_photo_path(@child, @gallery.id, p), class: 'button' %> <%= link_to 'Delete', child_gallery_photo_path(@child.id, @gallery.id, p), method: :delete, class: 'button delete-button', data: { confirm: 'Are you sure you want to delete this photo?' } %></li>
-    <% end %>
-  <% end %>
-</ul>
+<h1>Step 3 - Photo</h1>
+<p>Add a new photo below.</p>
 
 <% if current_user == @child.user %>
-	<p><%= link_to 'Add Photo', new_child_gallery_photo_path(@child.id, @gallery.id), class: 'button' %></p>
+	<p><%= link_to 'Add Photo', new_user_child_gallery_photo_path(@user, @child, @gallery), class: 'button' %></p>
 <% end %>

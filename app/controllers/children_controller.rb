@@ -1,13 +1,13 @@
 class ChildrenController < ApplicationController
 
-	before_action :get_child, only: [:show, :edit, :update]
-	before_action :destroy_child, only: [:destroy]
+	before_action :get_user
 	before_action :logged_in?
 	before_action :account_owner?, except: [:new, :create]
+	before_action :get_child, only: [:show, :edit, :update, :destroy]
 
 
 	def index
-		@children = Child.all
+		@children = @user.children
 	end
 
 	def new
@@ -15,12 +15,12 @@ class ChildrenController < ApplicationController
 	end
 
 	def create
-		@child = User.find(session[:user_id])
-								 .children
-								 .create(child_params)
+		@child = @user
+						 .children
+						 .create(child_params)
 		if @child.save
-		  flash[:success] = 'Your Child Has Been Added.'
-		  redirect_to current_user
+		  flash[:success] = 'Child Added Successfully.'
+		  redirect_to user_child_path(@user, @child)
 		else
 		  flash[:error] = @child.errors.full_messages.join('. ')
 		  render :new
@@ -36,8 +36,8 @@ class ChildrenController < ApplicationController
 
 	def update
 		if @child.update(child_params)
-		  flash[:success] = 'Child Updated!'
-		  redirect_to current_user
+		  flash[:success] = 'Child Updated Successfully.'
+		  redirect_to user_children_path
 		else
 		  flash[:error] = @child.errors.full_messages.join('. ')
 		  render :edit
@@ -47,8 +47,8 @@ class ChildrenController < ApplicationController
 	def destroy
 		@child.destroy
 		if @child.destroy
-		  flash[:success] = 'Your Child Has Been Deleted Successfully.'
-		  redirect_to current_user
+		  flash[:success] = 'Child Deleted Successfully.'
+		  redirect_to user_children_path
 		else
 		  flash[:error] = @child.errors.full_messages.join('. ')
 		  render :back
@@ -63,20 +63,16 @@ class ChildrenController < ApplicationController
 	end
 
 	def get_user
-    @user = User.friendly.find(params[:id])
+    @user = User.friendly.find(params[:user_id])
   end
 
 	def get_child
     @child = Child.find(params[:id])
   end
 
-	def destroy_child
-    @child = Child.find(params[:child_id])
-  end
-
   def account_owner?
-    if current_user != @child.user
-      flash[:error] = 'You do not have permission to view this account'
+    if current_user != @user
+      flash[:error] = 'You do not have permission.'
       redirect_to current_user
     end
   end

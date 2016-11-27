@@ -2,6 +2,8 @@ class ChildrenController < ApplicationController
 
 	before_action :get_child, only: [:show, :edit, :update]
 	before_action :destroy_child, only: [:destroy]
+	before_action :logged_in?
+	before_action :account_owner?
 
 
 	def index
@@ -66,6 +68,13 @@ class ChildrenController < ApplicationController
 
 	def destroy_child
     @child = Child.find(params[:child_id])
+  end
+
+  def account_owner?
+    if current_user != @user
+      flash[:error] = 'You do not have permission to view this account'
+      redirect_to current_user
+    end
   end
 
 end

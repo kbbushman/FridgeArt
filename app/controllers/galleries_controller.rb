@@ -2,6 +2,8 @@ class GalleriesController < ApplicationController
 
 	before_action :get_child, only: [:new, :show, :edit, :update]
 	before_action :get_gallery, only: [:show, :edit, :update, :destroy]
+	before_action :logged_in?
+	before_action :account_owner?
 
 	def index
 		@galleries = Child.find(params[:id]).galleries.all
@@ -69,6 +71,13 @@ class GalleriesController < ApplicationController
 
 	def get_gallery
     @gallery = Gallery.find(params[:id])
+  end
+
+  def account_owner?
+    if current_user != Child.find(params[:child_id]).user
+      flash[:error] = 'You do not have permission to view this account'
+      redirect_to current_user
+    end
   end
 
 

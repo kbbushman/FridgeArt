@@ -3,7 +3,7 @@ class ChildrenController < ApplicationController
 	before_action :get_child, only: [:show, :edit, :update]
 	before_action :destroy_child, only: [:destroy]
 	before_action :logged_in?
-	before_action :account_owner?
+	before_action :account_owner?, except: [:new, :create]
 
 
 	def index
@@ -62,6 +62,10 @@ class ChildrenController < ApplicationController
 		params.require(:child).permit(:child_name)
 	end
 
+	def get_user
+    @user = User.friendly.find(params[:id])
+  end
+
 	def get_child
     @child = Child.find(params[:id])
   end
@@ -71,7 +75,7 @@ class ChildrenController < ApplicationController
   end
 
   def account_owner?
-    if current_user != @user
+    if current_user != @child.user
       flash[:error] = 'You do not have permission to view this account'
       redirect_to current_user
     end

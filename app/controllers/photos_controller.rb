@@ -3,6 +3,8 @@ class PhotosController < ApplicationController
 	before_action :get_child, except: [:create]
 	before_action :get_gallery, except: [:create]
 	before_action :get_photo, only: [:show, :edit, :update, :destroy]
+	before_action :logged_in?
+	before_action :account_owner?
 
 	def index
 		@photos = @gallery.photos
@@ -76,6 +78,13 @@ class PhotosController < ApplicationController
 
 	def get_photo
     @photo = Photo.find(params[:id])
+  end
+
+  def account_owner?
+    if current_user != Child.find(params[:child_id]).user
+      flash[:error] = 'You do not have permission to view this account'
+      redirect_to current_user
+    end
   end
 
 end

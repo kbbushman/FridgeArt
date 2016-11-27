@@ -16,7 +16,8 @@ class UsersController < ApplicationController
 		@user = User.create(create_user_params)
 		if @user.save
 			login(@user)
-			redirect_to @user
+			flash[:success] = 'New Account Created, Welcome!'
+			redirect_to user_children_path(@user)
 		else
 			flash[:error] = @user.errors.full_messages.join('. ')
       render :new
@@ -24,6 +25,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		@children = @user.children
 	end
 
 	def edit
@@ -31,7 +33,7 @@ class UsersController < ApplicationController
 
 	def update
 	  if @user.update(update_user_params)
-	    flash[:success] = 'Profile Updated!'
+	    flash[:success] = 'Profile Updated Successfully.'
 	    redirect_to @user
 	  else
 	    flash[:error] = @user.errors.full_messages.join('. ')
@@ -61,7 +63,7 @@ class UsersController < ApplicationController
 
   def account_owner?
     if current_user != @user
-      flash[:error] = 'You do not have permission to view this account'
+      flash[:error] = 'You do not have permission.'
       redirect_to current_user
     end
   end

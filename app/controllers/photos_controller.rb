@@ -1,7 +1,8 @@
 class PhotosController < ApplicationController
 
-	before_action :get_child, except: [:create]
-	before_action :get_gallery, except: [:create]
+	before_action :get_user
+	before_action :get_child
+	before_action :get_gallery
 	before_action :get_photo, only: [:show, :edit, :update, :destroy]
 	before_action :logged_in?, except: [:show]
 	before_action :account_owner?, except: [:show]
@@ -15,15 +16,15 @@ class PhotosController < ApplicationController
 	end
 
 	def create
-		@photo = current_user
-						.photos
-						.new(create_photo_params)
-		@photo.gallery_id = params[:gallery_id]
+		@photo = @user
+						 .photos
+						 .new(create_photo_params)
+		@photo.gallery_id = @gallery.id
 		@photo.save
 
 		if @photo.save
-		  flash[:success] = 'Your Photo Has Been Added.'
-		  redirect_to child_gallery_path(params[:child_id], @photo.gallery_id)
+		  flash[:success] = 'Photo Added Successfully.'
+		  redirect_to user_child_gallery_path(@user, @child, @gallery)
 		else
 		  flash[:error] = @photo.errors.full_messages.join('. ')
 		  render :new
@@ -38,8 +39,8 @@ class PhotosController < ApplicationController
 
 	def update
 			if @photo.update(update_photo_params)
-		  flash[:success] = 'Photo Updated!'
-		  redirect_to child_gallery_path(@child.id, @gallery.id)
+		  flash[:success] = 'Photo Updated Successfully.'
+		  redirect_to user_child_gallery_path(@user, @child.id, @gallery.id)
 		else
 		  flash[:error] = @gallery.errors.full_messages.join('. ')
 		  render :back
@@ -49,8 +50,8 @@ class PhotosController < ApplicationController
 	def destroy
 		@photo.destroy
 		if @photo.destroy
-		  flash[:success] = 'Photo Has Been Deleted Successfully.'
-		  redirect_to child_gallery_path(@child.id, @gallery.id)
+		  flash[:success] = 'Photo Deleted Successfully.'
+		  redirect_to user_child_gallery_path(@user, @child, @gallery)
 		else
 		  flash[:error] = @photo.errors.full_messages.join('. ')
 		  render :back
@@ -68,6 +69,10 @@ class PhotosController < ApplicationController
 		params.require(:photo).permit(:photo_name, :photo_description)
 	end
 
+	def get_user
+    @user = User.friendly.find(params[:user_id])
+  end
+
 	def get_child
 		@child = Child.find(params[:child_id])
 	end
@@ -82,7 +87,7 @@ class PhotosController < ApplicationController
 
   def account_owner?
     if current_user != Child.find(params[:child_id]).user
-      flash[:error] = 'You do not have permission to view this account'
+      flash[:error] = 'You do not have permission.'
       redirect_to current_user
     end
   end

@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   post '/sessions', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
-	resources :users
-	resources :children do
-		resources :galleries do
-			resources :photos
+	resources :users do
+		resources :children do
+			resources :galleries do
+				resources :photos
+			end
 		end
 	end
 

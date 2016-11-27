@@ -7,16 +7,3 @@
 	<p><%= link_to 'Edit Profile', edit_user_path, class: 'button' %></p>
 	<p><%= link_to 'Delete Profile', @user, method: :delete, class: 'button delete-button', data: { confirm: 'Are you sure you want to delete your profile?' } %></p>
 </section>
-
-<section id="user-children">
-
-	<p><%= link_to 'Add Child', new_child_path, class: 'button' %></p>
-
-	<h3>Current Children</h3>
-		<ul>
-			<% @user.children.each do |c| %>
-	      <li><%= link_to c.child_name, child_path(c) %> <%= link_to 'Edit', edit_child_path(:id => c.id), class: 'button delete-button' %> <%= link_to 'Delete', child_path(:child_id => c.id), method: :delete, class: 'button delete-button', data: { confirm: 'Are you sure you want to delete this child?' } %></li>
-	    <% end %>
-    </ul>
-
-</section>

@@ -1,6 +1,6 @@
 <h1>Edit Photo</h1>
 
-<%= form_for @photo, url: child_gallery_photo_path(@child.id, @gallery.id) do |f| %>
+<%= form_for @photo, url: user_child_gallery_photo_path(@user, @child, @gallery) do |f| %>
 
 	<div class="input-field">
 		<p><span class="profile-label">Photo Name</span><%= f.text_field :photo_name, placeholder: "Photo Name", class: 'value' %></p>

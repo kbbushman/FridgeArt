@@ -1,6 +1,6 @@
 <h1>Edit Child</h1>
 
-<%= form_for(@child,url: child_path) do |f| %>
+<%= form_for @child, url: user_child_path(@user) do |f| %>
 
 	<p><span class="profile-label">Child's Name</span><%= f.text_field :child_name, placeholder: "Child's Name", class: 'value' %></p>
 

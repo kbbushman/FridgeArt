@@ -1,6 +1,6 @@
 <h1>Add New Photo</h1>
 
-<%= form_for ([@child, @gallery, @photo]) do |f| %>
+<%= form_for ([@user, @child, @gallery, @photo]) do |f| %>
   <div class="container-gray">
     <div class="input-field">
       <%= f.file_field :image %>

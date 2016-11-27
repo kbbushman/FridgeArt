@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
 	before_action :get_user, only: [:show, :edit, :update, :destroy]
+	before_action :logged_in?, except: [:index, :new, :create]
+	before_action :account_owner?, except: [:index, :new, :create]
 
 	def index
 		@users = User.all
@@ -55,6 +57,13 @@ class UsersController < ApplicationController
 
   def update_user_params
     params.require(:user).permit(:first_name, :last_name, :email)
+  end
+
+  def account_owner?
+    if current_user != @user
+      flash[:error] = 'You do not have permission to view this account'
+      redirect_to current_user
+    end
   end
 
 end

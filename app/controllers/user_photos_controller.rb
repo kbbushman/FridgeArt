@@ -1,14 +1,16 @@
-class PhotosController < ApplicationController
+class UserPhotosController < ApplicationController
 
 	before_action :get_user
-	before_action :get_child
-	before_action :get_gallery
+	before_action :get_gallery, only: [:new, :create]
 	before_action :get_photo, only: [:show, :edit, :update, :destroy]
-	before_action :logged_in?, except: [:show]
-	before_action :account_owner?, except: [:show]
+	before_action :logged_in?
+	before_action :account_owner?
 
 	def index
-		@photos = @gallery.photos
+		@photos = @user.photos
+	end
+
+	def show
 	end
 
 	def new
@@ -31,16 +33,13 @@ class PhotosController < ApplicationController
 		end
 	end
 
-	def show
-	end
-
 	def edit
 	end
 
 	def update
 			if @photo.update(update_photo_params)
 		  flash[:success] = 'Photo Updated Successfully.'
-		  redirect_to user_child_gallery_path(@user, @child.id, @gallery.id)
+		  redirect_to user_gallery_path(@user, @photo.gallery)
 		else
 		  flash[:error] = @gallery.errors.full_messages.join('. ')
 		  render :back
@@ -51,7 +50,7 @@ class PhotosController < ApplicationController
 		@photo.destroy
 		if @photo.destroy
 		  flash[:success] = 'Photo Deleted Successfully.'
-		  redirect_to user_child_gallery_path(@user, @child, @gallery)
+		  redirect_to :back
 		else
 		  flash[:error] = @photo.errors.full_messages.join('. ')
 		  render :back
@@ -61,32 +60,32 @@ class PhotosController < ApplicationController
 
 	private
 
-	def create_photo_params
-		params.require(:photo).permit(:photo_name, :photo_description, :image)
-	end
-
-	def update_photo_params
-		params.require(:photo).permit(:photo_name, :photo_description)
-	end
-
 	def get_user
     @user = User.friendly.find(params[:user_id])
   end
-
-	def get_child
-		@child = Child.find(params[:child_id])
-	end
-
-	def get_gallery
-		@gallery = Gallery.find(params[:gallery_id])
-	end
 
 	def get_photo
     @photo = Photo.find(params[:id])
   end
 
+	def get_gallery
+    @gallery = Gallery.find(params[:id])
+  end
+
+  def create_photo_params
+  	params.require(:photo).permit(:photo_name, :photo_description, :image)
+  end
+
+  def update_photo_params
+  	params.require(:photo).permit(:photo_name, :photo_description)
+  end
+
+  def photo_params
+  	params.require(:child).permit(:child_name)
+  end
+
   def account_owner?
-    if current_user != Child.find(params[:child_id]).user
+    if current_user != @user
       flash[:error] = 'You do not have permission.'
       redirect_to current_user
     end

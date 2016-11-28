@@ -20,6 +20,14 @@ Rails.application.routes.draw do
   patch '/users/:user_id/all-children/:id', to: 'user_children#update'
   delete '/users/:user_id/all-children/:id', to: 'user_children#destroy'
 
+  get '/users/:user_id/all-photos', to: 'user_photos#index', as: 'all_photos'
+  post '/users/:user_id/all-galleries/:id', to: 'user_photos#create'
+  get '/users/:user_id/all-galleries/:id/all-photos/new', to: 'user_photos#new', as: 'new_all_photo'
+  get '/users/:user_id/all-photos/:id/edit', to: 'user_photos#edit', as: 'edit_all_photo'
+  get '/users/:user_id/all-photos/:id', to: 'user_photos#show', as: 'all_photo'
+  patch '/users/:user_id/all-photos/:id', to: 'user_photos#update'
+  delete '/users/:user_id/all-photos/:id', to: 'user_photos#destroy'
+
 	resources :users do
 		resources :children do
 			resources :galleries do

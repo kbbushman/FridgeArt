@@ -1,0 +1,8 @@
+<h1>All Galleries</h1>
+
+<% @galleries.each do |g| %>
+<p><%= g.child.child_name %></p>
+<ul>
+    <li><%= link_to g.gallery_name, user_gallery_path(@user, g) %> <%= link_to 'Edit', edit_user_gallery_path(@user, g), class: 'button delete-button' %> <%= link_to 'Delete', user_gallery_path(@user, g), method: :delete, class: 'button delete-button', data: { confirm: 'Are you sure you want to delete this gallery?' } %></li>
+</ul>
+<% end %>

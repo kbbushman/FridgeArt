@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
   get '/users/:user_id/all-galleries', to: 'user_galleries#index', as: 'user_galleries'
+  post '/users/:user_id/all-children/:id', to: 'user_galleries#create'
+  get '/users/:user_id/all-children/:id/all-galleries/new', to: 'user_galleries#new', as: 'new_user_gallery'
   get '/users/:user_id/all-galleries/:id/edit', to: 'user_galleries#edit', as: 'edit_user_gallery'
   get '/users/:user_id/all-galleries/:id', to: 'user_galleries#show', as: 'user_gallery'
   patch '/users/:user_id/all-galleries/:id', to: 'user_galleries#update'

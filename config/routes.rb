@@ -12,8 +12,13 @@ Rails.application.routes.draw do
   patch '/users/:user_id/all-galleries/:id', to: 'user_galleries#update'
   delete '/users/:user_id/all-galleries/:id', to: 'user_galleries#destroy'
 
-  # get '/users/:user_id/children', to: 'user_children#index', as: 'user_children'
-  # get '/users/:user_id/children/:id', to: 'user_children#show', as: 'user_child'
+  get '/users/:user_id/all-children', to: 'user_children#index', as: 'all_children'
+  post '/users/:user_id/all-children', to: 'user_children#create'
+  get '/users/:user_id/all-children/new', to: 'user_children#new', as: 'new_all_child'
+  get '/users/:user_id/all-children/:id/edit', to: 'user_children#edit', as: 'edit_all_child'
+  get '/users/:user_id/all-children/:id', to: 'user_children#show', as: 'all_child'
+  patch '/users/:user_id/all-children/:id', to: 'user_children#update'
+  delete '/users/:user_id/all-children/:id', to: 'user_children#destroy'
 
 	resources :users do
 		resources :children do

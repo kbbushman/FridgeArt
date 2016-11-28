@@ -30,6 +30,7 @@
         <% if current_user %>
           <ul class="nav navbar-nav">
             <li><%= link_to "Add Photo", user_children_path(current_user) %></li>
+            <li><%= link_to "All Children", all_children_path(current_user) %></li>
             <li><%= link_to "All Galleries", user_galleries_path(current_user) %></li>
           </ul>
         <% end %>

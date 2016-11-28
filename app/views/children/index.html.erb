@@ -4,7 +4,7 @@
 		<p>Add A New Child Or Select one Below</p>
 			<ul>
 				<% @children.each do |c| %>
-		      <li><%= link_to c.child_name, user_child_path(@user, c) %> <%= link_to 'Edit', edit_user_child_path(@user, c), class: 'button delete-button' %> <%= link_to 'Delete', user_child_path(@user, c), method: :delete, class: 'button delete-button', data: { confirm: 'Are you sure you want to delete this child?' } %></li>
+		      <li><%= link_to c.child_name, user_child_path(@user, c) %></li>
 		    <% end %>
 	    </ul>
 	<% else %>

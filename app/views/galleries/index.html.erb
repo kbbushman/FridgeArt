@@ -3,7 +3,7 @@
 
 <ul>
 	<% @galleries.each do |g| %>
-    <li><%= link_to g.gallery_name, user_child_gallery_path(@user, @child.id, g.id) %> <%= link_to 'Edit', edit_user_child_gallery_path(@user, @child.id, g.id), class: 'button delete-button' %> <%= link_to 'Delete', user_child_gallery_path(@user, @child, g.id), method: :delete, class: 'button delete-button', data: { confirm: 'Are you sure you want to delete this gallery?' } %></li>
+    <li><%= link_to g.gallery_name, user_child_gallery_path(@user, @child.id, g.id) %> </li>
   <% end %>
 </ul>
 

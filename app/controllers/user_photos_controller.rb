@@ -3,8 +3,8 @@ class UserPhotosController < ApplicationController
 	before_action :get_user
 	before_action :get_gallery, only: [:new, :create]
 	before_action :get_photo, only: [:show, :edit, :update, :destroy]
-	before_action :logged_in?
-	before_action :account_owner?
+	before_action :logged_in?, except: [:index, :show]
+	before_action :account_owner?, except: [:index, :show]
 
 	def index
 		@photos = @user.photos

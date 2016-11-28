@@ -1,0 +1,7 @@
+<h1><%= @child.child_name %></h1>
+
+<ul>
+	<% @galleries.each do |g| %>
+    <li><%= link_to g.gallery_name, user_gallery_path(@user, g) %></li>
+  <% end %>
+</ul>

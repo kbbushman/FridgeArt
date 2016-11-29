@@ -27,7 +27,7 @@ class PhotosController < ApplicationController
 		  redirect_to user_gallery_path(@user, @gallery)
 		else
 		  flash[:error] = @photo.errors.full_messages.join('. ')
-		  render :new
+		  render :back
 		end
 	end
 

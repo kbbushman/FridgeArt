@@ -3,8 +3,8 @@ class GalleriesController < ApplicationController
 	before_action :get_user
 	before_action :get_child
 	before_action :get_gallery, only: [:show, :edit, :update, :destroy]
-	before_action :logged_in?, except: [:show]
-	before_action :account_owner?, except: [:show]
+	before_action :logged_in?
+	before_action :account_owner?
 
 	def index
 		@galleries = @child.galleries

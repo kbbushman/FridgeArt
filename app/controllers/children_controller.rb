@@ -1,9 +1,9 @@
 class ChildrenController < ApplicationController
 
 	before_action :get_user
-	before_action :logged_in?
-	before_action :account_owner?, except: [:new, :create]
 	before_action :get_child, only: [:show, :edit, :update, :destroy]
+	before_action :logged_in?
+	before_action :account_owner?
 
 
 	def index

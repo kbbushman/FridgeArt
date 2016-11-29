@@ -50,22 +50,32 @@
 
   <!-- Start Flash Errors -->
   <% if flash[:error] %>
-    <div class="container small-container">
+    <div class="flash-container">
       <div class="alert alert-danger">
-        <%= flash[:error] %>
+        <div class="wrap">
+          <%= flash[:error] %>
+        </div>
       </div>
     </div>
   <% end %>
 
   <% if flash[:success] %>
-    <div class="container small-container">
+    <div class="flash-container">
       <div class="alert alert-success">
-        <%= flash[:success] %>
+        <div class="wrap">
+          <%= flash[:success] %>
+        </div>
       </div>
     </div>
   <% end %><!-- End Flash Errors -->
 
-    <%= yield %>
+    <div class="wrap">
+      <%= yield %>
+    </div>
+
+    <footer>
+      <p>&copy; 2016 FridgeArt</p>
+    </footer>
 
     <!-- Bootstrap Minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

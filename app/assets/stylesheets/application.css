@@ -13,3 +13,75 @@
  *= require_tree .
  *= require_self
  */
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  background-color: #fff;
+  min-height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  padding: 0 0 4rem;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* STRUCTURE AND LAYOUT
+--------------------------------------- */
+
+.wrap {
+	max-width: 1140px;
+	padding: 0 30px;
+	margin: 50px auto 0;
+}
+
+.flash-container {
+	font-size: 24px;
+	text-align: left;
+	padding: 0;
+	margin: 0;
+}
+
+.flash-container .wrap {
+	margin: 0 auto;
+}
+
+/* NAVIGATION
+--------------------------------------- */
+
+nav .container-fluid {
+	max-width: 1240px;
+	margin: 0 auto;
+}
+
+.navbar {
+	margin-bottom: 0;
+}
+
+/* FOOTER
+--------------------------------------- */
+
+footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #f8f8f8;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  padding: 25px 0 15px;
+  margin: 0;
+  border-top: 1px solid #e7e7e7;
+}
+

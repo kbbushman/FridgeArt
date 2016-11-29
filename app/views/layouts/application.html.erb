@@ -28,7 +28,7 @@
 
       <div class="collapse navbar-collapse" id="navbar-collapse-1">
         <% if current_user %>
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav all-nav-buttons">
             <li><%= link_to "Add Photo", user_children_path(current_user) %></li>
             <li><%= link_to "All Children", all_children_path(current_user) %></li>
             <li><%= link_to "All Galleries", user_galleries_path(current_user) %></li>
@@ -69,12 +69,10 @@
     </div>
   <% end %><!-- End Flash Errors -->
 
-    <div class="wrap">
       <%= yield %>
-    </div>
 
     <footer>
-      <p>&copy; 2016 FridgeArt</p>
+      <p>Copyright &copy; 2016 FridgeArt</p>
     </footer>
 
     <!-- Bootstrap Minified JavaScript -->

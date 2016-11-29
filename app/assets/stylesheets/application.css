@@ -65,7 +65,7 @@ input[type="button"],
 input[type="submit"] {
   display: inline-block;
   background-color: #194f85;
-  min-width: 245px;
+  min-width: 200px;
   height: auto;
   color: #fff;
   font-family: sans-serif;
@@ -85,7 +85,7 @@ input[type="submit"] {
 
 .submit-button {
 	background-color: #276cb0;
-  max-width: 245px;
+  max-width: 200px;
 }
 
 button:hover,
@@ -95,6 +95,23 @@ input[type="button"]:hover {
   background-color: #276cb0;
   color: #fff;
   text-decoration: none;
+}
+
+.cancel-button {
+  background-color: #555;
+  margin-right: 30px;
+}
+
+.cancel-button:hover {
+  background-color: #666;
+}
+
+.delete-button {
+  background-color: #c72525;
+}
+
+.delete-button:hover {
+  background-color: #df3737;
 }
 
 /* STRUCTURE AND LAYOUT

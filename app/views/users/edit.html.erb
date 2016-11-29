@@ -1,14 +1,24 @@
-<h1>Edit Your Profile</h1>
+<div class="form-container">
 
-<%= form_for(@user,url: user_path) do |f| %>
+	<h1>Edit Your Profile</h1>
 
-	<p><span class="profile-label">First Name</span><%= f.text_area :first_name, placeholder: "First Name", class: 'value' %></p>
+	<%= form_for(@user,url: user_path) do |f| %>
 
-	<p><span class="profile-label">Last Name</span><%= f.text_area :last_name, placeholder: "Last Name", class: 'value' %></p>
+		<div class="input-field">
+			<p class="profile-label">First Name</p>
+			<%= f.text_field :first_name, placeholder: "First Name", class: 'value' %>
+		</div>
+		<div class="input-field">
+			<p class="profile-label">Last Name</p>
+			<%= f.text_field :last_name, placeholder: "Last Name", class: 'value' %>
+		</div>
+		<div class="input-field">
+			<p class="profile-label">Email</p>
+			<%= f.text_field :email, placeholder: "Email", class: 'value' %>
+		</div>
+		<div class="float-fix">
+			<%= f.submit "Save", class: 'button submit-button right' %>
+			<%= link_to 'Cancel', :back, class: 'button cancel-button right' %>
 
-	<p><span class="profile-label">Email</span><%= f.text_area :email, placeholder: "Email", class: 'value' %></p>
-
-	<p><%= link_to 'Cancel', :back, class: 'button'  %></p>
-	<p><%= f.submit "Save", class: 'button musician-button' %></p>
-
-<% end %>
+	<% end %>
+</div>

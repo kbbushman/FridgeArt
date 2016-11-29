@@ -220,6 +220,11 @@ nav .container-fluid {
   border-radius: 0;
 }
 
+.navbar-toggle {
+  background-color: #fff;
+  width: 40px;
+}
+
 /* FOOTER
 --------------------------------------- */
 

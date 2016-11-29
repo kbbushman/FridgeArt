@@ -1,10 +1,17 @@
-<h1>All Photos</h1>
-
-<ul>
-	<% @photos.each do |p| %>
-    <li><%= link_to(image_tag(p.image.url(:thumb)), all_photo_path(@user, p)) %><br />
-    <% if current_user == @user %>
-    	<%= link_to p.photo_name, all_photo_path(@user, p) %> <%= link_to 'Edit', edit_all_photo_path(@user, p), class: 'button' %> <%= link_to 'Delete', all_photo_path(@user, p), method: :delete, class: 'button delete-button', data: { confirm: 'Are you sure you want to delete this photo?' } %></li>
-    <% end %>
-  <% end %>
-</ul>
+<section id="all-photos">
+	<h1>All Photos</h1>
+	<ul class="all-photos-list">
+		<% @photos.each do |p| %>
+	    <li>
+	    	<%= link_to p.photo_name, all_photo_path(@user, p) %>
+		    <%= link_to(image_tag(p.image.url(:thumb)), all_photo_path(@user, p), class: 'all-photo') %>
+		    <% if current_user == @user %>
+		    	<div class="buttons">
+			    	<%= link_to 'Delete', all_photo_path(@user, p), method: :delete, class: 'button small-delete', data: { confirm: 'Are you sure you want to delete this photo?' } %>
+			    	<%= link_to 'Edit', edit_all_photo_path(@user, p), class: 'button small-edit' %>
+		    	</div>
+		    <% end %>
+    	</li>
+	  <% end %>
+	</ul>
+</section>

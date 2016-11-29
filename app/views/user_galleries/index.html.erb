@@ -1,16 +1,22 @@
-<h1>All Galleries</h1>
+<section id="all-galleries">
+	<h1>All Galleries</h1>
 
-<% @children.each do |c| %>
-	<p><%= c.child_name %></p>
-	<ul>
-	<% c.galleries.each do |g| %>
-	    <li><%= link_to g.gallery_name, user_gallery_path(@user, g) %>
-	    <% if current_user == @user %>
-	    	<%= link_to 'Edit', edit_user_gallery_path(@user, g), class: 'button delete-button' %> <%= link_to 'Delete', user_gallery_path(@user, g), method: :delete, class: 'button delete-button', data: { confirm: 'Are you sure you want to delete this gallery?' } %></li>
+	<% @children.each do |c| %>
+		<p class="gallery-child-name"><%= c.child_name %></p>
+		<ul class="all-galleries-list">
+			<% c.galleries.each do |g| %>
+		    <li>
+			    <%= link_to g.gallery_name, user_gallery_path(@user, g), class: 'gallery-name' %>
+			    <%= link_to 'Placeholder', user_gallery_path(@user, g), class: 'gallery-image-placeholder' %>
+			    <% if current_user == @user %>
+			    	<%= link_to 'Delete', user_gallery_path(@user, g), method: :delete, class: 'button small-delete', data: { confirm: 'Are you sure you want to delete this gallery?' } %>
+			    	<%= link_to 'Edit', edit_user_gallery_path(@user, g), class: 'button small-edit' %>
+	    	</li>
 	    <% end %>
-	  <% end %>
-	</ul>
-	<% if current_user == @user %>
-		<p><%= link_to 'Add New Gallery', new_user_gallery_path(@user, c), class: 'button' %></p>
+  <% end %>
+		</ul>
+		<% if current_user == @user %>
+			<%= link_to 'Add New Gallery', new_user_gallery_path(@user, c), class: 'button' %>
+		<% end %>
 	<% end %>
-<% end %>
+</section>

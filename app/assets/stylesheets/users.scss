@@ -1,3 +1,18 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#profile-information {
+	max-width: 600px;
+	text-align: center;
+	padding: 0;
+	margin: 60px auto 0;
+}
+
+.profile-info:first-of-type {
+	margin-top: 30px;
+}
+
+.profile-info:last-of-type {
+	margin-bottom: 40px;
+}

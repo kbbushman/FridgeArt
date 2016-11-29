@@ -124,6 +124,19 @@ input[type="button"]:hover {
   background-color: #df3737;
 }
 
+.small-delete {
+  background-color: #c72525;
+  width: 80px;
+  font-size: 12px;
+}
+
+.small-edit {
+  background-color: #aaa;
+  width: 80px;
+  font-size: 12px;
+}
+
+
 .upload-button {
 	background-color: #fff;
 	width: 100%;
@@ -143,6 +156,12 @@ input[type="button"]:hover {
 /* STRUCTURE AND LAYOUT
 --------------------------------------- */
 
+.wrap {
+  max-width: 1140px;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+
 .flash-container {
 	font-size: 20px;
 	text-align: left;
@@ -152,6 +171,11 @@ input[type="button"]:hover {
 
 .flash-container .wrap {
 	margin: 0 auto;
+}
+
+.alert-success,
+.alert-danger {
+  margin-bottom: 0;
 }
 
 .float-fix {
@@ -167,6 +191,10 @@ input[type="button"]:hover {
 
 .right {
 	float: right;
+}
+
+.bottom-margin {
+  margin-bottom: 60px;
 }
 
 /* NAVIGATION
@@ -207,6 +235,11 @@ nav .container-fluid {
 .navbar {
   margin-bottom: 0;
   border-radius: 0;
+}
+
+.navbar-toggle {
+  background-color: #fff;
+  width: 40px;
 }
 
 /* FOOTER

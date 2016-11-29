@@ -1,3 +1,24 @@
 // Place all the styles related to the children controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#children,
+#gallery {
+	text-align: center;
+	padding: 0;
+	margin: 60px auto 0;
+}
+
+ul.children-list,
+ul.gallery-list {
+	list-style-type: none;
+	text-align: center;
+	padding: 0;
+	margin: 20px auto 30px;
+}
+
+ul.children-list li,
+ul.gallery-list li {
+	font-size: 20px;
+	font-weight: bold;
+}

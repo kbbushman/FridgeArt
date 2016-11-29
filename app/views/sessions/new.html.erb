@@ -1,14 +1,16 @@
-<div class="form-container">
-	<h1>Log In</h1>
-	<%= form_for @user, url: "/sessions", method: "POST" do |f| %>
-	  <div class="input-field">
-	    <%= f.email_field :email, placeholder: "Email" %>
-	  </div>
-	  <div class="input-field">
-	    <%= f.password_field :password, placeholder: "Password" %>
-	  </div>
-	  <div class="float-fix">
-		  <%= f.submit "Log In", class: 'button submit-button right' %>
-	  </div>
-	<% end %>
+<div class="wrap">
+	<div class="form-container">
+		<h1>Log In</h1>
+		<%= form_for @user, url: "/sessions", method: "POST" do |f| %>
+		  <div class="input-field">
+		    <%= f.email_field :email, placeholder: "Email" %>
+		  </div>
+		  <div class="input-field">
+		    <%= f.password_field :password, placeholder: "Password" %>
+		  </div>
+		  <div class="float-fix">
+			  <%= f.submit "Log In", class: 'button submit-button right' %>
+		  </div>
+		<% end %>
+	</div>
 </div>

@@ -1,7 +1,7 @@
-<section id="user-children">
+<section id="children">
 		<h1>Step 1 - Child</h1>
 		<p>Add A New Child Or Select one Below</p>
-			<ul class="user-children">
+			<ul class="children-list">
 				<% @children.each do |c| %>
 		      <li><%= link_to c.child_name, user_child_path(@user, c) %></li>
 		    <% end %>

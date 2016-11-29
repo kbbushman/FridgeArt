@@ -1,22 +1,20 @@
 <div class="form-container">
   <h1>Sign Up</h1>
   <%= form_for @user do |f| %>
-    <div class="container-gray">
-      <div class="input-field">
-        <%= f.text_field :first_name, placeholder: "First Name" %>
-      </div>
-      <div class="input-field">
-        <%= f.text_field :last_name, placeholder: "Last Name" %>
-      </div>
-      <div class="input-field">
-        <%= f.email_field :email, placeholder: "Email" %>
-      </div>
-      <div class="input-field">
-        <%= f.password_field :password, placeholder: "Password" %>
-      </div>
-      <div class="float-fix">
-        <%= f.submit "Sign Up", class: "button submit-button right" %>
-      </div>
+    <div class="input-field">
+      <%= f.text_field :first_name, placeholder: "First Name" %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :last_name, placeholder: "Last Name" %>
+    </div>
+    <div class="input-field">
+      <%= f.email_field :email, placeholder: "Email" %>
+    </div>
+    <div class="input-field">
+      <%= f.password_field :password, placeholder: "Password" %>
+    </div>
+    <div class="float-fix">
+      <%= f.submit "Sign Up", class: "button submit-button right" %>
     </div>
   <% end %>
 </div>

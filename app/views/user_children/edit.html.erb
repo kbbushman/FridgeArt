@@ -1,10 +1,12 @@
-<h1>Edit Child</h1>
-
-<%= form_for @child, url: all_child_path do |f| %>
-
-	<p><span class="profile-label">Child's Name</span><%= f.text_field :child_name, placeholder: "Child's Name", class: 'value' %></p>
-
-	<p><%= link_to 'Cancel', :back, class: 'button' %></p>
-	<p><%= f.submit "Save", class: 'button submit-button' %></p>
-
-<% end %>
+<div class="form-container">
+	<h1>Edit Child</h1>
+	<%= form_for @child, url: all_child_path do |f| %>
+		<div class="input-field">
+			<%= f.text_field :child_name, placeholder: "Child's Name", class: 'value' %>
+		</div>
+		<div class="float-fix">
+			<%= f.submit "Save", class: 'button submit-button right' %>
+			<%= link_to 'Cancel', :back, class: 'button cancel-button right' %>
+		</div>
+	<% end %>
+</div>

@@ -1,21 +1,18 @@
 <div class="form-container">
-
   <h1>Select New Photo</h1>
-
   <%= form_for ([@user, @child, @gallery, @photo]) do |f| %>
     <div class="input-field">
-      <%= f.file_field :image, class: 'button upload-button' %>
+      <%= f.file_field :image, class: 'upload-button' %>
     </div>
     <div class="input-field">
-      <%= f.text_field :photo_name, placeholder: "Photo Name" %>
+      <%= f.text_field :photo_name, placeholder: 'Photo Name' %>
     </div>
     <div class="input-field">
-      <%= f.text_field :photo_description, placeholder: "Photo Description" %>
+      <%= f.text_field :photo_description, placeholder: 'Photo Description' %>
     </div>
     <div class="float-fix">
-      <%= f.submit "Add Photo", class: "button submit-button right" %>
+      <%= f.submit 'Add Photo', class: 'button submit-button right' %>
       <%= link_to 'Cancel', :back, class: 'button cancel-button right' %>
     </div>
   <% end %>
-
 </div>

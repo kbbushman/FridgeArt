@@ -1,9 +1,6 @@
 <div class="form-container">
-
 	<h1>Edit Your Profile</h1>
-
 	<%= form_for(@user,url: user_path) do |f| %>
-
 		<div class="input-field">
 			<p class="profile-label">First Name</p>
 			<%= f.text_field :first_name, placeholder: "First Name", class: 'value' %>
@@ -17,8 +14,8 @@
 			<%= f.text_field :email, placeholder: "Email", class: 'value' %>
 		</div>
 		<div class="float-fix">
-			<%= f.submit "Save", class: 'button submit-button right' %>
+			<%= f.submit 'Save', class: 'button submit-button right' %>
 			<%= link_to 'Cancel', :back, class: 'button cancel-button right' %>
-
+		</div>
 	<% end %>
 </div>

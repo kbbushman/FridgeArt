@@ -1,16 +1,15 @@
-<h1>Edit Photo</h1>
-
-<%= form_for @photo, url: all_photo_path do |f| %>
-
-	<div class="input-field">
-		<p><span class="profile-label">Photo Name</span><%= f.text_field :photo_name, placeholder: "Photo Name", class: 'value' %></p>
-	</div>
-
-	<div class="input-field">
-		<p><span class="profile-label">Photo Description</span><%= f.text_area :photo_description, placeholder: "Photo Description", class: 'value' %></p>
-	</div>
-
-	<p><%= link_to 'Cancel', :back, class: 'button' %></p>
-	<p><%= f.submit "Save", class: 'button submit-button' %></p>
-
-<% end %>
+<div class="form-container">
+	<h1>Edit Photo</h1>
+	<%= form_for @photo, url: all_photo_path do |f| %>
+		<div class="input-field">
+			<%= f.text_field :photo_name, placeholder: "Photo Name", class: 'value' %>
+		</div>
+		<div class="input-field">
+			<%= f.text_area :photo_description, placeholder: "Photo Description", class: 'value' %>
+		</div>
+		<div class="float-fix">
+			<%= f.submit "Save", class: 'button submit-button right' %>
+			<%= link_to 'Cancel', :back, class: 'button cancel-button right' %>
+		</div>
+	<% end %>
+</div>

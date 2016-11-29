@@ -1,11 +1,12 @@
-<h1>Add A Gallery</h1>
-
-<%= form_for @gallery, url: all_child_path(@user, @child) do |f| %>
-  <div class="container-gray">
-    <div class="input-field">
-      <%= f.text_field :gallery_name, placeholder: "Gallery Name" %>
-    </div>
-    <p><%= link_to 'Cancel', :back, class: 'button' %></p>
-    <%= f.submit "Add Gallery", class: "button submit-button" %>
-  </div>
-<% end %>
+<div class="form-container">
+	<h1>Add Gallery</h1>
+	<%= form_for @gallery, url: all_child_path(@user, @child) do |f| %>
+	  <div class="input-field">
+	    <%= f.text_field :gallery_name, placeholder: "Gallery Name" %>
+	  </div>
+	  <div class="float-fix">
+		  <%= f.submit 'Add Gallery', class: 'button submit-button right' %>
+		  <%= link_to 'Cancel', :back, class: 'button cancel-button right' %>
+		</div>
+	<% end %>
+</div>

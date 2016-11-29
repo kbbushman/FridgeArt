@@ -1,16 +1,12 @@
 <div class="form-container">
-
-	<h1>Add Your Child</h1>
-
+	<h1>Add Child</h1>
   <%= form_for ([@user, @child]) do |f| %>
-
     <div class="input-field">
       <%= f.text_field :child_name, placeholder: "Child's Name" %>
     </div>
     <div class="float-fix">
-      <%= f.submit "Add Child", class: "button submit-button right" %>
+      <%= f.submit 'Add Child', class: 'button submit-button right' %>
       <%= link_to 'Cancel', :back, class: 'button cancel-button right' %>
     </div>
   <% end %>
-
 </div>

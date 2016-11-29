@@ -1,11 +1,11 @@
 <h1>All Children</h1>
 
 <section id="user-children">
-			<ul>
-				<% @children.each do |c| %>
-		      <li><%= link_to c.child_name, all_child_path(@user, c) %> <%= link_to 'Edit', edit_all_child_path(@user, c), class: 'button' %> <%= link_to 'Delete', all_child_path(@user, c), method: :delete, class: 'button delete-button', data: { confirm: 'Are you sure you want to delete this child?' } %></li>
-		    <% end %>
-	    </ul>
+	<ul>
+		<% @children.each do |c| %>
+      <li><%= link_to c.child_name, all_child_path(@user, c) %> <%= link_to 'Edit', edit_all_child_path(@user, c), class: 'button' %> <%= link_to 'Delete', all_child_path(@user, c), method: :delete, class: 'button delete-button', data: { confirm: 'Are you sure you want to delete this child?' } %></li>
+    <% end %>
+  </ul>
 </section>
 
-<p><%= link_to 'Add New Child', new_all_child_path, class: 'button' %></p>
+<%= link_to 'Add New Child', new_all_child_path, class: 'button' %>

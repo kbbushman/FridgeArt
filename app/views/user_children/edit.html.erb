@@ -1,10 +1,7 @@
 <div class="form-container">
 	<h1>Edit Child</h1>
-
 	<%= form_for @child, url: all_child_path do |f| %>
-
 		<div class="input-field">
-			<p class="profile-label">Child's Name</p>
 			<%= f.text_field :child_name, placeholder: "Child's Name", class: 'value' %>
 		</div>
 		<div class="float-fix">
@@ -12,5 +9,4 @@
 			<%= link_to 'Cancel', :back, class: 'button cancel-button right' %>
 		</div>
 	<% end %>
-
 </div>

@@ -1,9 +1,6 @@
 <div class="form-container">
-
 	<h1>Edit Photo</h1>
-
 	<%= form_for @photo, url: all_photo_path do |f| %>
-
 		<div class="input-field">
 			<%= f.text_field :photo_name, placeholder: "Photo Name", class: 'value' %>
 		</div>
@@ -15,5 +12,4 @@
 			<%= link_to 'Cancel', :back, class: 'button cancel-button right' %>
 		</div>
 	<% end %>
-
 </div>

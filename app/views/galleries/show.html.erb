@@ -2,5 +2,5 @@
 <p>Add a new photo below.</p>
 
 <% if current_user == @child.user %>
-	<p><%= link_to 'Add Photo', new_user_child_gallery_photo_path(@user, @child, @gallery), class: 'button' %></p>
+	<p><%= link_to 'Add New Photo', new_user_child_gallery_photo_path(@user, @child, @gallery), class: 'button' %></p>
 <% end %>

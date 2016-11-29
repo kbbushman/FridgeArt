@@ -1,5 +1,4 @@
 <section id="user-children">
-	<% if @user.children != 0 %>
 		<h1>Step 1 - Child</h1>
 		<p>Add A New Child Or Select one Below</p>
 			<ul>
@@ -7,8 +6,5 @@
 		      <li><%= link_to c.child_name, user_child_path(@user, c) %></li>
 		    <% end %>
 	    </ul>
-	<% else %>
-		<h1>Please Add A Child</h1>
-	<% end %>
-	<p><%= link_to 'Add Child', new_user_child_path, class: 'button' %></p>
+	<%= link_to 'Add New Child', new_user_child_path, class: 'button' %>
 </section>

@@ -28,7 +28,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 # File upload for images
-gem "paperclip", "~> 5.0.0"
+gem "paperclip", '~> 5.0.0'
+
+# AWS storage for paperclip
+gem 'aws-sdk', '~> 2.3'
 
 # Create slugs from User Name
 gem 'friendly_id', '~> 5.1.0'

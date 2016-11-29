@@ -2,9 +2,9 @@ class Photo < ApplicationRecord
   belongs_to :gallery
   belongs_to :user
 
-  validates :photo_name, :photo_description, :image, presence: true
+  validates :photo_name, :photo_description, :image_file_name, presence: true
 
-  has_attached_file :image, :styles => { large: "1000>", medium: "300x300#", thumb: "180x180#" }, :default_url => ":style/default-musician-photo.png"
+  has_attached_file :image, :styles => { large: "1000>", medium: "300x300#", thumb: "180x180#" }, :default_url => ":style/default.png"
   # Validate content type
   validates_attachment_content_type :image, content_type: /\Aimage/
   # Validate filename

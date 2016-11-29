@@ -4,8 +4,8 @@ class PhotosController < ApplicationController
 	before_action :get_child
 	before_action :get_gallery
 	before_action :get_photo, only: [:show, :edit, :update, :destroy]
-	before_action :logged_in?, except: [:show]
-	before_action :account_owner?, except: [:show]
+	before_action :logged_in?
+	before_action :account_owner?
 
 	def index
 		@photos = @gallery.photos

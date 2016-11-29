@@ -1,10 +1,13 @@
 <section id="children">
 		<h1>Step 1 - Child</h1>
 		<p>Add A New Child Or Select one Below</p>
-			<ul class="children-list">
+			<ul class="all-children-list">
 				<% @children.each do |c| %>
-		      <li><%= link_to c.child_name, user_child_path(@user, c) %></li>
+		      <li>
+			      <%= link_to c.child_name, user_child_path(@user, c) %>
+			      <%= link_to 'Placeholder', user_child_path(@user, c), class: 'child-image-placeholder' %>
+		      </li>
 		    <% end %>
 	    </ul>
-	<%= link_to 'Add New Child', new_user_child_path, class: 'button' %>
+	<%= link_to 'Add New Child', new_user_child_path, class: 'button bottom-margin' %>
 </section>

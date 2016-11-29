@@ -16,7 +16,7 @@
   <% end %>
 		</ul>
 		<% if current_user == @user %>
-			<p><%= link_to 'Add New Gallery', new_user_gallery_path(@user, c), class: 'button' %></p>
+			<%= link_to 'Add New Gallery', new_user_gallery_path(@user, c), class: 'button' %>
 		<% end %>
 	<% end %>
 </section>

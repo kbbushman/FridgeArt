@@ -1,9 +1,13 @@
 <section id="gallery">
-<h1>Step 2 - Gallery</h1>
-<p>Add a new gallery, or select one below</p>
-<ul class="gallery-list">
-	<% @galleries.each do |g| %>
-    <li><%= link_to g.gallery_name, user_child_gallery_path(@user, @child.id, g.id) %></li>
-  <% end %>
-</ul>
-<%= link_to 'Add New Gallery', new_user_child_gallery_path(@user, @child), class: 'button' %>
+	<h1>Step 2 - Gallery</h1>
+	<p>Add a new gallery, or select one below</p>
+	<ul class="all-galleries-list">
+		<% @galleries.each do |g| %>
+	    <li>
+		    <%= link_to g.gallery_name, user_child_gallery_path(@user, @child.id, g.id) %>
+		    <%= link_to 'Placeholder', user_child_gallery_path(@user, @child.id, g.id), class: 'gallery-image-placeholder' %>
+	    </li>
+	  <% end %>
+	</ul>
+	<%= link_to 'Add New Gallery', new_user_child_gallery_path(@user, @child), class: 'button bottom-margin' %>
+</section>

@@ -193,6 +193,10 @@ input[type="button"]:hover {
 	float: right;
 }
 
+.bottom-margin {
+  margin-bottom: 60px;
+}
+
 /* NAVIGATION
 --------------------------------------- */
 

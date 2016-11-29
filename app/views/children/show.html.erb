@@ -1,10 +1,11 @@
+<section id="gallery">
 <h1>Step 2 - Gallery</h1>
 <p>Add a new gallery, or select one below</p>
 
-<ul>
+<ul class="gallery-list">
 	<% @galleries.each do |g| %>
     <li><%= link_to g.gallery_name, user_child_gallery_path(@user, @child.id, g.id) %></li>
   <% end %>
 </ul>
 
-<p><%= link_to 'Add New Gallery', new_user_child_gallery_path(@user, @child), class: 'button' %></p>
+<%= link_to 'Add New Gallery', new_user_child_gallery_path(@user, @child), class: 'button' %>

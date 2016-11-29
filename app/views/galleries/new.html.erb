@@ -1,11 +1,15 @@
-<h1>Add A Gallery</h1>
+<div class="form-container">
 
-<%= form_for ([@user, @child, @gallery]) do |f| %>
-  <div class="container-gray">
+	<h1>Add A Gallery</h1>
+
+	<%= form_for ([@user, @child, @gallery]) do |f| %>
     <div class="input-field">
       <%= f.text_field :gallery_name, placeholder: "Gallery Name" %>
     </div>
-    <p><%= link_to 'Cancel', :back, class: 'button' %></p>
-    <%= f.submit "Add Gallery", class: "button submit-button" %>
-  </div>
-<% end %>
+    <div class="float-fix">
+	    <%= f.submit "Add Gallery", class: "button submit-button right" %>
+	    <p><%= link_to 'Cancel', :back, class: 'button cancel-button right' %></p>
+    </div>
+	<% end %>
+
+</div>

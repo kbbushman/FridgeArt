@@ -143,6 +143,12 @@ input[type="button"]:hover {
 /* STRUCTURE AND LAYOUT
 --------------------------------------- */
 
+.wrap {
+  max-width: 1140px;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+
 .flash-container {
 	font-size: 20px;
 	text-align: left;
@@ -152,6 +158,11 @@ input[type="button"]:hover {
 
 .flash-container .wrap {
 	margin: 0 auto;
+}
+
+.alert-success,
+.alert-danger {
+  margin-bottom: 0;
 }
 
 .float-fix {

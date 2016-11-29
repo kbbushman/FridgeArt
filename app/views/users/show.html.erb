@@ -1,9 +1,10 @@
-<h1>Welcome <%= @user.first_name %>!</h1>
-
-<section id="profile-information">
-	<h3>Your Information</h3>
-	<p>Name: <%= @user.first_name %> <%= @user.last_name %></p>
-	<p>Email: <%= @user.email %></p>
-	<p><%= link_to 'Edit Profile', edit_user_path, class: 'button' %></p>
-	<p><%= link_to 'Delete Profile', @user, method: :delete, class: 'button delete-button', data: { confirm: 'Are you sure you want to delete your profile?' } %></p>
-</section>
+<div class="wrap">
+	<section id="profile-information">
+		<h1>Welcome <%= @user.first_name %>!</h1>
+			<h3>Your Information</h3>
+			<p class="profile-info">Name: <%= @user.first_name %> <%= @user.last_name %></p>
+			<p class="profile-info">Email: <%= @user.email %></p>
+			<%= link_to 'Delete Profile', @user, method: :delete, class: 'button delete-button', data: { confirm: 'Are you sure you want to delete your profile?' } %>
+			<%= link_to 'Edit Profile', edit_user_path, class: 'button submit-button' %>
+	</section>
+</div>

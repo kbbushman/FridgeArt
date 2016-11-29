@@ -1,3 +1,41 @@
 // Place all the styles related to the user_children controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#all-children {
+	text-align: center;
+	padding: 0;
+	margin: 60px auto;
+}
+
+ul.all-children-list {
+	list-style-type: none;
+	text-align: center;
+	padding: 0;
+	margin: 20px auto 30px;
+}
+
+ul.all-children-list li {
+	display: inline-block;
+	max-width: 180px;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 0;
+	margin: 0 30px 0;
+}
+
+.image-placeholder {
+	display: block;
+	background: #eee;
+	width: 180px;
+	height: 180px;
+	font-size: 15px;
+	font-weight: normal;
+	padding: 70px 0 0;
+	margin: 0 auto;
+	border: 1px solid #ddd;
+}
+
+.child-name {
+	display: block;
+}

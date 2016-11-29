@@ -124,6 +124,19 @@ input[type="button"]:hover {
   background-color: #df3737;
 }
 
+.small-delete {
+  background-color: #c72525;
+  width: 80px;
+  font-size: 12px;
+}
+
+.small-edit {
+  background-color: #aaa;
+  width: 80px;
+  font-size: 12px;
+}
+
+
 .upload-button {
 	background-color: #fff;
 	width: 100%;
